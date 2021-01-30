@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:greenomedia/Activittyscreen/activity.dart';
+import 'package:greenomedia/Community/community.dart';
 import 'package:greenomedia/Homescreen/homescreen.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
@@ -15,7 +16,7 @@ class _BottomState extends State<Bottom> {
       PersistentTabController(initialIndex: 0);
 
   List<Widget> _buildScreens() {
-    return [Home(), Activity(), Home(), Home()];
+    return [Home(), Activity(), Community(), Home()];
   }
 
   List<PersistentBottomNavBarItem> _navBarsItems() {

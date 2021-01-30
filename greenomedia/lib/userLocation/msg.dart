@@ -38,6 +38,7 @@ class _LocationState extends State<Message> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white60,
       body: CupertinoAlertDialog(
         title: Text("Congrats ",
             style: GoogleFonts.kaushanScript(
