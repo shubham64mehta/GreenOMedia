@@ -1,5 +1,6 @@
 import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_database/ui/firebase_animated_list.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:greenomedia/Global/global.dart';
@@ -18,9 +19,11 @@ class _HomeState extends State<Home> {
     _databaseReference = FirebaseDatabase.instance.reference().child("Credit");
     if (a == null) {
       setState(() {
-        a = 0;
+        a = 2;
       });
     }
+
+    print(a);
   }
 
   @override
@@ -61,75 +64,29 @@ class _HomeState extends State<Home> {
                     height: 70,
                     child: Padding(
                       padding: const EdgeInsets.all(13.0),
-                      child: FirebaseAnimatedList(
-                          query: _databaseReference,
-                          itemBuilder: (_, DataSnapshot snapshot,
-                              Animation<double> animation, int index) {
-                            return FutureBuilder(
-                                future: _databaseReference
-                                    .reference()
-                                    .child(snapshot.key)
-                                    .once(),
-                                builder: (context, snapshot1) {
-                                  return snapshot1.hasData
-                                      ? Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          children: [
-                                            Text("GREEN CREDITS: ",
-                                                style:
-                                                    GoogleFonts.kaushanScript(
-                                                        shadows: [
-                                                      Shadow(
-                                                          color: Colors.grey,
-                                                          blurRadius: 5,
-                                                          offset: Offset(2, 3))
-                                                    ],
-                                                        color: Colors.white,
-                                                        fontSize: 25,
-                                                        fontWeight:
-                                                            FontWeight.bold)),
-                                            Text(
-                                              snapshot1.data.value['credit'],
-                                              style: TextStyle(
-                                                  color: Colors.white,
-                                                  fontSize: 25,
-                                                  fontWeight: FontWeight.w900),
-                                            )
-                                          ],
-                                        )
-                                      : Container(
-                                          child: Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.center,
-                                            children: [
-                                              Text("GREEN CREDITS: ",
-                                                  style:
-                                                      GoogleFonts.kaushanScript(
-                                                          shadows: [
-                                                        Shadow(
-                                                            color: Colors.grey,
-                                                            blurRadius: 5,
-                                                            offset:
-                                                                Offset(2, 3))
-                                                      ],
-                                                          color: Colors.white,
-                                                          fontSize: 25,
-                                                          fontWeight:
-                                                              FontWeight.bold)),
-                                              Text(
-                                                "0",
-                                                style: TextStyle(
-                                                    color: Colors.white,
-                                                    fontSize: 25,
-                                                    fontWeight:
-                                                        FontWeight.w900),
-                                              )
-                                            ],
-                                          ),
-                                        );
-                                });
-                          }),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text("GREEN CREDITS: ",
+                              style: GoogleFonts.kaushanScript(
+                                  shadows: [
+                                    Shadow(
+                                        color: Colors.grey,
+                                        blurRadius: 5,
+                                        offset: Offset(2, 3))
+                                  ],
+                                  color: Colors.white,
+                                  fontSize: 25,
+                                  fontWeight: FontWeight.bold)),
+                          Text(
+                            a.toString(),
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 25,
+                                fontWeight: FontWeight.w900),
+                          )
+                        ],
+                      ),
                     )),
               ),
               Padding(

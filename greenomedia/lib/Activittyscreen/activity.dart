@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:greenomedia/Donation/organization.dart';
 import 'package:greenomedia/Plantatree/tree.dart';
 import 'package:greenomedia/waste/biodegradable.dart';
 
@@ -353,8 +354,10 @@ class _ActivityState extends State<Activity> {
                       style: TextStyle(fontSize: 18),
                     ),
                     onPressed: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => Tree1()));
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => Organization()));
                     },
                   ),
                   CupertinoContextMenuAction(

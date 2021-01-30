@@ -8,6 +8,7 @@ import 'package:geolocator/geolocator.dart';
 import 'package:geocoder/geocoder.dart';
 import 'package:greenomedia/Global/global.dart';
 import 'package:greenomedia/bottomnavbaaar/bottombar.dart';
+import 'package:greenomedia/userLocation/msg.dart';
 
 class Location extends StatefulWidget {
   @override
@@ -86,7 +87,7 @@ class _LocationState extends State<Location> {
 
   route() {
     Navigator.pushReplacement(
-        context, MaterialPageRoute(builder: (context) => Bottom()));
+        context, MaterialPageRoute(builder: (context) => Message()));
   }
 
   @override

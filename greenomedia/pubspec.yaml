@@ -42,6 +42,9 @@ dependencies:
   image_picker: ^0.6.3+1
   firebase_database: 
   uuid: ^2.0.4
+  razorpay_flutter: ^1.2.2
+  fluttertoast: ^7.0.1+1
+  page_transition: "^1.1.6"
 
 dev_dependencies:
   flutter_test:
@@ -78,6 +81,25 @@ flutter:
     - images/Greenexpo.jpeg
     - images/conference.jpeg
     - images/Plantation.jpeg
+    - images/world.jpeg
+    - images/earth.jpeg
+    - images/idea.jpeg
+    - images/swecha.jpeg
+    - images/sankalp.jpeg
+    - images/user.png
+    - images/girl1.jpeg
+    - images/girl2.jpeg
+    - images/girl3.jpeg
+    - images/girl4.jpeg
+    - images/girl5.jpeg
+    - images/girl6.jpeg
+    - images/girl7.jpg
+    - images/girl8.jpeg
+    - images/girl9.jpeg
+    - images/girl10.jpeg
+    - images/girl11.jpeg
+    - images/girl12.jpeg
+    - images/girl13.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
