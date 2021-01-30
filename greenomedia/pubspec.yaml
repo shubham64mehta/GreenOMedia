@@ -38,6 +38,10 @@ dependencies:
   firebase_auth: ^0.16.1
   google_sign_in: ^4.1.1
   persistent_bottom_nav_bar: any
+  firebase_storage: ^3.1.1
+  image_picker: ^0.6.3+1
+  firebase_database: 
+  uuid: ^2.0.4
 
 dev_dependencies:
   flutter_test:
@@ -67,6 +71,10 @@ flutter:
     - images/blog.jpg
     - images/donate.jpg
     - images/group.jpg
+    - images/combo.jpeg
+    - images/Soil.jpeg
+    - images/seeds.jpeg
+    - images/saplimg.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

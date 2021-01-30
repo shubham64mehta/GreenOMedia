@@ -1,11 +1,11 @@
 import 'dart:async';
 import 'package:delayed_display/delayed_display.dart';
 //import 'package:env/Homescreen/homescreen.dart';
-//import 'package:env/bottomnavbaaar/bottombar.dart';
 import 'package:flutter/material.dart';
 import 'package:geocoder/geocoder.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:geocoder/geocoder.dart';
+import 'package:greenomedia/bottomnavbaaar/bottombar.dart';
 
 class Location extends StatefulWidget {
   @override
@@ -56,8 +56,8 @@ class _LocationState extends State<Location> {
   }
 
   route() {
-    //Navigator.pushReplacement(
-    //    context, MaterialPageRoute(builder: (context) => Bottom()));
+    Navigator.pushReplacement(
+        context, MaterialPageRoute(builder: (context) => Bottom()));
   }
 
   @override
