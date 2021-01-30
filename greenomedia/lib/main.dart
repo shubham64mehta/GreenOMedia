@@ -5,6 +5,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:greenomedia/Onboarding/onboadinggreen.dart';
 import 'package:greenomedia/userLocation/location.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
@@ -12,7 +13,7 @@ import 'package:sliding_up_panel/sliding_up_panel.dart';
 import 'GoogleAuth/google.dart';
 
 void main() {
-  runApp(MaterialApp(debugShowCheckedModeBanner: false, home: Login()));
+  runApp(MaterialApp(debugShowCheckedModeBanner: false, home: GreenApp()));
 }
 
 class Login extends StatefulWidget {
