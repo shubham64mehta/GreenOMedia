@@ -22,6 +22,14 @@
           }
         },
         {
+          "client_id": "631027751624-k7iamtvtvtv0g47l126d2ckifukj705t.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.greenomedia",
+            "certificate_hash": "dde8a0dd620228724a0903970d94ecace5f29d7d"
+          }
+        },
+        {
           "client_id": "631027751624-p8qkbtb2j2hfjmamtv9t0o38sq93i1rq.apps.googleusercontent.com",
           "client_type": 3
         }

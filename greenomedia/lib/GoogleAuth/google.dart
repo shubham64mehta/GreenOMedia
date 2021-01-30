@@ -1,7 +1,7 @@
-import 'package:donate/Global/global.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:greenomedia/Global/global.dart';
+//import 'package:shared_preferences/shared_preferences.dart';
 
 final FirebaseAuth _auth = FirebaseAuth.instance;
 final GoogleSignIn googleSignIn = GoogleSignIn();
@@ -38,14 +38,14 @@ Future<String> signInWithGoogle() async {
   final FirebaseUser currentUser = await _auth.currentUser();
   assert(user.uid == currentUser.uid);
   user1 = user.uid;
-  SharedPreferences pref15 = await SharedPreferences.getInstance();
-  pref15.setString("alreadyregistered", user.uid);
-  SharedPreferences pref1 = await SharedPreferences.getInstance();
-  pref1.setString("name", name);
-  SharedPreferences pref2 = await SharedPreferences.getInstance();
-  pref2.setString("image", imageUrl);
-  SharedPreferences pref3 = await SharedPreferences.getInstance();
-  pref3.setString("email", email);
+  //SharedPreferences pref15 = await SharedPreferences.getInstance();
+  // pref15.setString("alreadyregistered", user.uid);
+  // SharedPreferences pref1 = await SharedPreferences.getInstance();
+  // pref1.setString("name", name);
+  // SharedPreferences pref2 = await SharedPreferences.getInstance();
+  //pref2.setString("image", imageUrl);
+  //SharedPreferences pref3 = await SharedPreferences.getInstance();
+  // pref3.setString("email", email);
   return 'signInWithGoogle succeeded: $user';
 }
 
