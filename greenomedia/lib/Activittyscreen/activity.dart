@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:greenomedia/Plantatree/tree.dart';
+import 'package:greenomedia/waste/biodegradable.dart';
 
 class Activity extends StatefulWidget {
   @override
@@ -148,8 +149,10 @@ class _ActivityState extends State<Activity> {
                       style: TextStyle(fontSize: 18),
                     ),
                     onPressed: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => Tree1()));
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => Biodegradable()));
                     },
                   ),
                   CupertinoContextMenuAction(
@@ -158,7 +161,10 @@ class _ActivityState extends State<Activity> {
                       style: TextStyle(fontSize: 18),
                     ),
                     onPressed: () {
-                      Navigator.pop(context);
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => Biodegradable()));
                     },
                   ),
                   CupertinoContextMenuAction(
@@ -167,7 +173,10 @@ class _ActivityState extends State<Activity> {
                       style: TextStyle(fontSize: 18),
                     ),
                     onPressed: () {
-                      Navigator.pop(context);
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => Biodegradable()));
                     },
                   ),
                 ],

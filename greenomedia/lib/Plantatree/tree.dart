@@ -36,7 +36,43 @@ class _Tree1State extends State<Tree1> {
         imageQuality: 80,
       );
       image1 = File(file.path);
-      uploadVideo(image1);
+      uploadVideo(image1).then((value) => {
+            showDialog(
+                context: context,
+                builder: (context) {
+                  Future.delayed(Duration(seconds: 4), () {
+                    Navigator.of(context).pop(true);
+                  });
+                  return CupertinoAlertDialog(
+                    title: Text(
+                        "Congrats you have contributed in saving Mother Earth",
+                        style: GoogleFonts.kaushanScript(
+                            letterSpacing: 5,
+                            shadows: [
+                              Shadow(
+                                  color: Colors.grey,
+                                  blurRadius: 5,
+                                  offset: Offset(2, 3))
+                            ],
+                            color: Colors.green[900],
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold)),
+                    content: Text(
+                        "You get 5 green creits for your contribution",
+                        style: GoogleFonts.kaushanScript(
+                            letterSpacing: 5,
+                            shadows: [
+                              Shadow(
+                                  color: Colors.grey,
+                                  blurRadius: 5,
+                                  offset: Offset(2, 3))
+                            ],
+                            color: Colors.black,
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold)),
+                  );
+                })
+          });
     } catch (error) {
       print(error);
     }
@@ -56,34 +92,6 @@ class _Tree1State extends State<Tree1> {
           check = !check;
         });
         add();
-        DelayedDisplay(
-          child: CupertinoAlertDialog(
-            title: Text("Congrats you have contributed in saving Mother Earth",
-                style: GoogleFonts.kaushanScript(
-                    letterSpacing: 5,
-                    shadows: [
-                      Shadow(
-                          color: Colors.grey,
-                          blurRadius: 5,
-                          offset: Offset(2, 3))
-                    ],
-                    color: Colors.green[900],
-                    fontSize: 29,
-                    fontWeight: FontWeight.bold)),
-            content: Text("You get 5 green creits for your contribution",
-                style: GoogleFonts.kaushanScript(
-                    letterSpacing: 5,
-                    shadows: [
-                      Shadow(
-                          color: Colors.grey,
-                          blurRadius: 5,
-                          offset: Offset(2, 3))
-                    ],
-                    color: Colors.black,
-                    fontSize: 26,
-                    fontWeight: FontWeight.bold)),
-          ),
-        );
       });
     });
     return downloadurl;

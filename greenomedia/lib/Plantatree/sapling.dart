@@ -14,7 +14,7 @@ class _SaplingState extends State<Sapling> {
           elevation: 0,
           backgroundColor: Colors.transparent,
           centerTitle: true,
-          title: Text("GreenOMedia",
+          title: Text("GreenOMedia Store",
               style: GoogleFonts.kaushanScript(
                   letterSpacing: 5,
                   shadows: [
@@ -22,7 +22,7 @@ class _SaplingState extends State<Sapling> {
                         color: Colors.grey, blurRadius: 5, offset: Offset(2, 3))
                   ],
                   color: Colors.green[900],
-                  fontSize: 30,
+                  fontSize: 26,
                   fontWeight: FontWeight.bold)),
         ),
         body: Column(

@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:geocoder/geocoder.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:geocoder/geocoder.dart';
+import 'package:greenomedia/Global/global.dart';
 import 'package:greenomedia/bottomnavbaaar/bottombar.dart';
 
 class Location extends StatefulWidget {
@@ -45,7 +46,7 @@ class _LocationState extends State<Location> {
         await Geocoder.local.findAddressesFromCoordinates(coordinates);
     setState(() {
       add1 = addresses.first.featureName;
-      add2 = addresses.first.addressLine;
+      address1 = addresses.first.addressLine;
       f = false;
     });
   }
@@ -87,7 +88,7 @@ class _LocationState extends State<Location> {
                 delay: Duration(seconds: 3),
                 fadeIn: true,
                 child: Text(
-                  f == true ? "HI" : add2,
+                  f == true ? "HI" : address1,
                   style: f == true
                       ? TextStyle(color: Colors.white)
                       : TextStyle(
