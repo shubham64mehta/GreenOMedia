@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:delayed_display/delayed_display.dart';
+import 'package:firebase_database/firebase_database.dart';
 //import 'package:env/Homescreen/homescreen.dart';
 import 'package:flutter/material.dart';
 import 'package:geocoder/geocoder.dart';
@@ -19,6 +20,32 @@ class _LocationState extends State<Location> {
   String add1;
   String add2;
   bool f = true;
+  Future read() async {
+    FirebaseDatabase.instance
+        .reference()
+        .child("Credit")
+        .child(user1)
+        .once()
+        .then((DataSnapshot snapshot) {
+      Map<dynamic, dynamic> values;
+      values = snapshot.value;
+
+      values.forEach((key, value) {
+        //
+        FirebaseDatabase.instance
+            .reference()
+            .child("Credit")
+            .child(user1)
+            .child("credit")
+            .once()
+            .then((DataSnapshot s) {
+          credit = s.value;
+          a = int.parse(credit);
+        });
+      });
+    });
+  }
+
   @override
   void initState() {
     // TODO: implement initState
@@ -26,6 +53,7 @@ class _LocationState extends State<Location> {
 
     getlocation();
     startTime();
+    read();
   }
 
   getlocation() async {

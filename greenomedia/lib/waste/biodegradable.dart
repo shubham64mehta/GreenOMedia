@@ -394,7 +394,7 @@ class _BiodegradableState extends State<Biodegradable> {
                                                         const EdgeInsets.all(
                                                             8.0),
                                                     child: Text(
-                                                        "One of the sellers will contact you soon",
+                                                        "One of the buyer will contact you soon",
                                                         style: GoogleFonts
                                                             .kaushanScript(
                                                                 letterSpacing:

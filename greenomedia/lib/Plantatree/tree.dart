@@ -2,10 +2,10 @@ import 'dart:io';
 import 'package:delayed_display/delayed_display.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:greenomedia/Global/global.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:greenomedia/Global/global.dart';
 import 'package:greenomedia/Plantatree/sapling.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:uuid/uuid.dart';
@@ -90,11 +90,37 @@ class _Tree1State extends State<Tree1> {
         setState(() {
           text = "Done";
           check = !check;
+          a = a + 5;
         });
         add();
+        add1();
       });
     });
     return downloadurl;
+  }
+
+  Future<void> add1() async {
+    var uuid = new Uuid().v1();
+    DatabaseReference _color2 = databaseReference.child("Credit").child(user1);
+    final TransactionResult transactionResult =
+        await _color2.runTransaction((MutableData mutableData) async {
+      mutableData.value = (mutableData.value ?? 0) + 1;
+
+      return mutableData;
+    });
+    if (transactionResult.committed) {
+      _color2
+          .push()
+          .set(<String, String>{"credit": "true", "uid": "true"}).then((_) {
+        print('Transaction  committed.');
+      });
+    } else {
+      print('Transaction not committed.');
+      if (transactionResult.error != null) {
+        print(transactionResult.error.message);
+      }
+    }
+    _color2.set({"credit": a.toString(), "uid": user1});
   }
 
   Future<void> add() async {

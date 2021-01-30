@@ -75,6 +75,9 @@ flutter:
     - images/Soil.jpeg
     - images/seeds.jpeg
     - images/saplimg.jpeg
+    - images/Greenexpo.jpeg
+    - images/conference.jpeg
+    - images/Plantation.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

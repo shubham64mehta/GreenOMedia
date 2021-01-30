@@ -1,6 +1,10 @@
+import 'package:firebase_database/firebase_database.dart';
+import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:greenomedia/Global/global.dart';
+
+DatabaseReference _databaseReference;
 
 class Home extends StatefulWidget {
   @override
@@ -8,6 +12,17 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  @override
+  void initState() {
+    super.initState();
+    _databaseReference = FirebaseDatabase.instance.reference().child("Credit");
+    if (a == null) {
+      setState(() {
+        a = 0;
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,30 +55,82 @@ class _HomeState extends State<Home> {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Container(
-                  decoration: BoxDecoration(
-                      color: Colors.green[700],
-                      borderRadius: BorderRadius.all(Radius.circular(10))),
-                  height: 70,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        "GREEN CREDITS: ",
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 20,
-                            fontWeight: FontWeight.w600),
-                      ),
-                      Text(
-                        "0",
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 20,
-                            fontWeight: FontWeight.w900),
-                      )
-                    ],
-                  ),
-                ),
+                    decoration: BoxDecoration(
+                        color: Colors.green[700],
+                        borderRadius: BorderRadius.all(Radius.circular(10))),
+                    height: 70,
+                    child: Padding(
+                      padding: const EdgeInsets.all(13.0),
+                      child: FirebaseAnimatedList(
+                          query: _databaseReference,
+                          itemBuilder: (_, DataSnapshot snapshot,
+                              Animation<double> animation, int index) {
+                            return FutureBuilder(
+                                future: _databaseReference
+                                    .reference()
+                                    .child(snapshot.key)
+                                    .once(),
+                                builder: (context, snapshot1) {
+                                  return snapshot1.hasData
+                                      ? Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            Text("GREEN CREDITS: ",
+                                                style:
+                                                    GoogleFonts.kaushanScript(
+                                                        shadows: [
+                                                      Shadow(
+                                                          color: Colors.grey,
+                                                          blurRadius: 5,
+                                                          offset: Offset(2, 3))
+                                                    ],
+                                                        color: Colors.white,
+                                                        fontSize: 25,
+                                                        fontWeight:
+                                                            FontWeight.bold)),
+                                            Text(
+                                              snapshot1.data.value['credit'],
+                                              style: TextStyle(
+                                                  color: Colors.white,
+                                                  fontSize: 25,
+                                                  fontWeight: FontWeight.w900),
+                                            )
+                                          ],
+                                        )
+                                      : Container(
+                                          child: Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: [
+                                              Text("GREEN CREDITS: ",
+                                                  style:
+                                                      GoogleFonts.kaushanScript(
+                                                          shadows: [
+                                                        Shadow(
+                                                            color: Colors.grey,
+                                                            blurRadius: 5,
+                                                            offset:
+                                                                Offset(2, 3))
+                                                      ],
+                                                          color: Colors.white,
+                                                          fontSize: 25,
+                                                          fontWeight:
+                                                              FontWeight.bold)),
+                                              Text(
+                                                "0",
+                                                style: TextStyle(
+                                                    color: Colors.white,
+                                                    fontSize: 25,
+                                                    fontWeight:
+                                                        FontWeight.w900),
+                                              )
+                                            ],
+                                          ),
+                                        );
+                                });
+                          }),
+                    )),
               ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
