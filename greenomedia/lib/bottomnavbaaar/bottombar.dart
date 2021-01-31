@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:greenomedia/Activittyscreen/activity.dart';
 import 'package:greenomedia/Community/community.dart';
 import 'package:greenomedia/Homescreen/homescreen.dart';
+import 'package:greenomedia/Profile/Profile.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
-import 'package:greenomedia/Profile.dart';
 
 class Bottom extends StatefulWidget {
   @override

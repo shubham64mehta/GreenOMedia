@@ -4,7 +4,9 @@ import 'package:delayed_display/delayed_display.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:greenomedia/Language/language1.dart';
 import 'package:greenomedia/Onboarding/onboadinggreen.dart';
 import 'package:greenomedia/userLocation/location.dart';
 import 'package:hexcolor/hexcolor.dart';
@@ -16,12 +18,80 @@ void main() {
   runApp(MaterialApp(debugShowCheckedModeBanner: false, home: GreenApp()));
 }
 
+String c;
+
+class One1 extends StatefulWidget {
+  static void setLocale(BuildContext context, Locale locale) {
+    _One1State state = context.findAncestorStateOfType<_One1State>();
+    state.setLocale(locale);
+  }
+
+  @override
+  _One1State createState() => _One1State();
+}
+
+class _One1State extends State<One1> {
+  Locale _locale;
+
+  void setLocale(Locale locale) {
+    setState(() {
+      _locale = locale;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      supportedLocales: [
+        const Locale('en', 'US'), // English, no country code
+        const Locale('es', 'ES'), // Hebrew, no country code
+        // Chinese *See Advanced Locales below*
+        // ... other locales the app supports
+      ],
+      locale: _locale,
+      localizationsDelegates: [
+        DemoLocalization.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      localeResolutionCallback: (devicelocale, supportedlocale) {
+        for (var locale in supportedlocale) {
+          if (locale.languageCode == devicelocale.languageCode &&
+              locale.countryCode == devicelocale.countryCode) {
+            return devicelocale;
+          }
+        }
+        return supportedlocale.first;
+      },
+      home: Login(),
+    );
+  }
+}
+
 class Login extends StatefulWidget {
   @override
   _LoginState createState() => _LoginState();
 }
 
 class _LoginState extends State<Login> {
+  void _changelanguage(String change1) {
+    Locale _temp;
+    switch (change1) {
+      case 'en':
+        _temp = Locale(change1, 'US');
+        break;
+      case 'es':
+        _temp = Locale(change1, 'ES');
+        break;
+    }
+
+    One1.setLocale(context, _temp);
+  }
+
+  List<String> a = ["English", "español", "français", "বাংলা", "ਪੰਜਾਬੀ"];
+  List<String> b = ["en", "es"];
   bool f = false;
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
   final formkey = GlobalKey<FormState>();
@@ -55,6 +125,100 @@ class _LoginState extends State<Login> {
         decoration: BoxDecoration(color: Colors.white),
         child: Stack(
           children: [
+            Padding(
+              padding: const EdgeInsets.all(23.0),
+              child: Align(
+                alignment: Alignment.topRight,
+                child: IconButton(
+                    icon: Icon(
+                      Icons.language_outlined,
+                      size: 29,
+                      color: Colors.black,
+                    ),
+                    onPressed: () {
+                      showModalBottomSheet(
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.only(
+                                  topLeft: Radius.circular(20),
+                                  topRight: Radius.circular(20))),
+                          context: context,
+                          builder: (BuildContext context) {
+                            return Container(
+                                width: MediaQuery.of(context).size.width,
+                                height:
+                                    MediaQuery.of(context).size.height / 1.5,
+                                child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Text(
+                                            "Please Select Your Language",
+                                            style: TextStyle(
+                                                color: Colors.black,
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 15)),
+                                      ),
+                                      Text("Por favor seleccione su idioma",
+                                          style: TextStyle(
+                                              color: Colors.black,
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 15)),
+                                      Container(
+                                        width:
+                                            MediaQuery.of(context).size.width,
+                                        height:
+                                            MediaQuery.of(context).size.height /
+                                                2.5,
+                                        child: ListView.builder(
+                                            itemCount: a.length,
+                                            itemBuilder: (context, index) {
+                                              return Column(
+                                                children: [
+                                                  ListTile(
+                                                    focusColor: Colors.blue,
+                                                    hoverColor: Colors.blue,
+                                                    onTap: () {
+                                                      c = b[index];
+                                                    },
+                                                    title: Center(
+                                                        child: Text(a[index])),
+                                                  ),
+                                                  Divider()
+                                                ],
+                                              );
+                                            }),
+                                      ),
+                                      SizedBox(
+                                        height:
+                                            MediaQuery.of(context).size.height /
+                                                40,
+                                      ),
+                                      SizedBox(
+                                        width: 100,
+                                        height: 50,
+                                        child: RaisedButton(
+                                            color: Colors.black,
+                                            shape: RoundedRectangleBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(30)),
+                                            child: Center(
+                                              child: Text(
+                                                "Next",
+                                                style: TextStyle(
+                                                    color: Colors.white),
+                                              ),
+                                            ),
+                                            onPressed: () {
+                                              _changelanguage(c);
+                                              Navigator.pop(context);
+                                            }),
+                                      )
+                                    ]));
+                          });
+                    }),
+              ),
+            ),
             Container(
               width: 500,
               child: Column(
@@ -95,7 +259,9 @@ class _LoginState extends State<Login> {
                   DelayedDisplay(
                     fadeIn: true,
                     delay: Duration(seconds: 2),
-                    child: Text("Let's unite for green",
+                    child: Text(
+                        DemoLocalization.of(context)
+                            .gettranslatedvalue('welcome to'),
                         style: GoogleFonts.kaushanScript(
                             shadows: [
                               Shadow(
@@ -123,7 +289,9 @@ class _LoginState extends State<Login> {
                 minHeight: MediaQuery.of(context).size.height / 3.5,
                 collapsed: Padding(
                   padding: const EdgeInsets.all(45.0),
-                  child: Text("Continue with Google",
+                  child: Text(
+                      DemoLocalization.of(context)
+                          .gettranslatedvalue('Patient'),
                       style: TextStyle(
                           shadows: [
                             Shadow(
@@ -133,7 +301,7 @@ class _LoginState extends State<Login> {
                           ],
                           color: CupertinoColors.white,
                           fontWeight: FontWeight.bold,
-                          fontSize: 30)),
+                          fontSize: 20)),
                 ),
                 panel: Center(
                   child: RaisedButton(
@@ -209,14 +377,22 @@ class _LoginState extends State<Login> {
                     ? MediaQuery.of(context).size.height / 7
                     : MediaQuery.of(context).size.height / 8,
                 collapsed: Padding(
-                  padding: const EdgeInsets.all(35.0),
+                  padding: const EdgeInsets.all(38.0),
                   child: Align(
                     alignment: Alignment.topRight,
-                    child: Text("Login with E-mail",
+                    child: Text(
+                        DemoLocalization.of(context)
+                            .gettranslatedvalue('Doctor'),
                         style: TextStyle(
+                            shadows: [
+                              Shadow(
+                                  offset: Offset(2, 2),
+                                  blurRadius: 5,
+                                  color: CupertinoColors.systemGrey)
+                            ],
                             color: CupertinoColors.black,
                             fontWeight: FontWeight.bold,
-                            fontSize: 30)),
+                            fontSize: 20)),
                   ),
                 ),
                 panel: Form(
