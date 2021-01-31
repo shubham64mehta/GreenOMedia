@@ -23,12 +23,12 @@ Firestore for storing the user data,Realtime database for the credit system,Geol
 Then used Razorpay for payment gateway
 
 
-## 📋 What's next for ADIRA?
-1.Adding more languages support
-2.Realtime leaderboard section
-2.Events to be updated more frequently and monthly Top 5 users on leaderboard will be getting bonus green credits 
-3.More options will be given for redeeming the green credits
-4.GreenOMedia store will be updated with more varieties of products
+## 📋 What's next for GreenOMedia?
+1.Adding more languages support<br>
+2.Realtime leaderboard section<br>
+2.Events to be updated more frequently and monthly Top 5 users on leaderboard will be getting bonus green credits<br> 
+3.More options will be given for redeeming the green credits<br>
+4.GreenOMedia store will be updated with more varieties of products<br>
 
 
 ## 🚴‍♂️ How to Use 
