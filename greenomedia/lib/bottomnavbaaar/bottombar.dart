@@ -5,6 +5,7 @@ import 'package:greenomedia/Community/community.dart';
 import 'package:greenomedia/Homescreen/homescreen.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
+import 'package:greenomedia/Profile.dart';
 
 class Bottom extends StatefulWidget {
   @override
@@ -16,7 +17,7 @@ class _BottomState extends State<Bottom> {
       PersistentTabController(initialIndex: 0);
 
   List<Widget> _buildScreens() {
-    return [Home(), Activity(), Community(), Home()];
+    return [Home(), Activity(), Community(), Profile()];
   }
 
   List<PersistentBottomNavBarItem> _navBarsItems() {

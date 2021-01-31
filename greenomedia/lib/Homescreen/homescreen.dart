@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:greenomedia/Global/global.dart';
+import 'package:greenomedia/calendar/Calendar.dart';
 
 DatabaseReference _databaseReference;
 
@@ -22,7 +23,7 @@ class _HomeState extends State<Home> {
         a = 2;
       });
     }
-
+    print(name);
     print(a);
   }
 
@@ -185,49 +186,55 @@ class _HomeState extends State<Home> {
               ),
               Padding(
                 padding: const EdgeInsets.fromLTRB(8, 0, 8, 8),
-                child: Container(
-                  height: 250,
-                  decoration: BoxDecoration(
-                      color: Colors.orange[100],
-                      borderRadius: BorderRadius.all(Radius.circular(20))),
-                  child: Padding(
-                    padding: const EdgeInsets.fromLTRB(20, 20, 30, 20),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              "Environment\nCalendar",
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                  fontSize: 25,
-                                  fontWeight: FontWeight.w700,
-                                  color: Colors.black),
-                            ),
-                            SizedBox(
-                              height: 20,
-                            ),
-                            Text(
-                              "Your environment\nevents\nCalendar",
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                  fontSize: 15,
-                                  fontWeight: FontWeight.w400,
-                                  color: Colors.black),
-                            ),
-                          ],
-                        ),
-                        Container(
-                          height: 230,
-                          width: 180,
-                          decoration: BoxDecoration(
-                              image: DecorationImage(
-                                  image: AssetImage("images/c.jpg"),
-                                  fit: BoxFit.cover)),
-                        ),
-                      ],
+                child: GestureDetector(
+                  onTap: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => Calendar()));
+                  },
+                  child: Container(
+                    height: 250,
+                    decoration: BoxDecoration(
+                        color: Colors.orange[100],
+                        borderRadius: BorderRadius.all(Radius.circular(20))),
+                    child: Padding(
+                      padding: const EdgeInsets.fromLTRB(20, 20, 30, 20),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                "Environment\nCalendar",
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                    fontSize: 25,
+                                    fontWeight: FontWeight.w700,
+                                    color: Colors.black),
+                              ),
+                              SizedBox(
+                                height: 20,
+                              ),
+                              Text(
+                                "Your environment\nevents\nCalendar",
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.w400,
+                                    color: Colors.black),
+                              ),
+                            ],
+                          ),
+                          Container(
+                            height: 230,
+                            width: 180,
+                            decoration: BoxDecoration(
+                                image: DecorationImage(
+                                    image: AssetImage("images/c.jpg"),
+                                    fit: BoxFit.cover)),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),
