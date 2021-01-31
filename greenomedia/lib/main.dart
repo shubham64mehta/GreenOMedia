@@ -8,14 +8,16 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:greenomedia/Language/language1.dart';
 import 'package:greenomedia/Onboarding/onboadinggreen.dart';
+import 'package:greenomedia/logo.dart';
+import 'package:greenomedia/news.dart';
 import 'package:greenomedia/userLocation/location.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
-
+import 'leader.dart';
 import 'GoogleAuth/google.dart';
 
 void main() {
-  runApp(MaterialApp(debugShowCheckedModeBanner: false, home: GreenApp()));
+  runApp(MaterialApp(debugShowCheckedModeBanner: false, home: Logo()));
 }
 
 String c;

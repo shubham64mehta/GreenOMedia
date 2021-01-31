@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:greenomedia/Global/global.dart';
 import 'package:greenomedia/calendar/Calendar.dart';
+import 'package:greenomedia/news.dart';
 
 DatabaseReference _databaseReference;
 
@@ -92,45 +93,51 @@ class _HomeState extends State<Home> {
               ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: Container(
-                  height: 250,
-                  decoration: BoxDecoration(
-                      color: Colors.green[100],
-                      borderRadius: BorderRadius.all(Radius.circular(20))),
-                  child: Padding(
-                    padding: const EdgeInsets.fromLTRB(20, 20, 20, 20),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              "Environment\nNews",
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                  fontSize: 25, fontWeight: FontWeight.w700),
-                            ),
-                            SizedBox(
-                              height: 20,
-                            ),
-                            Text(
-                              "Latest Updates on\nWorld Environment",
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                  fontSize: 15, fontWeight: FontWeight.w400),
-                            ),
-                          ],
-                        ),
-                        Container(
-                          height: 230,
-                          width: 180,
-                          decoration: BoxDecoration(
-                              image: DecorationImage(
-                                  image: AssetImage("images/t.jpg"),
-                                  fit: BoxFit.cover)),
-                        )
-                      ],
+                child: GestureDetector(
+                  onTap: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => News()));
+                  },
+                  child: Container(
+                    height: 250,
+                    decoration: BoxDecoration(
+                        color: Colors.green[100],
+                        borderRadius: BorderRadius.all(Radius.circular(20))),
+                    child: Padding(
+                      padding: const EdgeInsets.fromLTRB(20, 20, 20, 20),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                "Environment\nNews",
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                    fontSize: 25, fontWeight: FontWeight.w700),
+                              ),
+                              SizedBox(
+                                height: 20,
+                              ),
+                              Text(
+                                "Latest Updates on\nWorld Environment",
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                    fontSize: 15, fontWeight: FontWeight.w400),
+                              ),
+                            ],
+                          ),
+                          Container(
+                            height: 230,
+                            width: 180,
+                            decoration: BoxDecoration(
+                                image: DecorationImage(
+                                    image: AssetImage("images/t.jpg"),
+                                    fit: BoxFit.cover)),
+                          )
+                        ],
+                      ),
                     ),
                   ),
                 ),
